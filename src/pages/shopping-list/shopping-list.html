@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar>
+      <ion-buttons start><!-- para agrupar botones en el ion-navbar -->
+        <!--<button ion-button (click)="onOpenMenu()">-->
+          <button ion-button menuToggle> <!--menuToggle directiva para desplegar y cerrar menu, este fue implementado en app.htm y app.component.ts-->
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="onShowOptions($event)">
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>Shopping List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onAddItem(f)"> <!--referencia al formulario--><!--(ngSubmit)="funcion(refAlFormulario)"-->
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Name:</ion-label>
+        <ion-input 
+        type="text" 
+        name="ingredient" 
+        placeholder="Milk"
+        ngModel
+        required></ion-input> <!--form approach usando ngModel, name="nombreatt" es obligatorio para que ngModel lo reconozca, required= campo obligatorio-->
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Ammount:</ion-label>
+        <ion-input 
+        type="number" 
+        name="ammount" 
+        placeholder="2"
+        ngModel
+        required></ion-input>
+      </ion-item>
+    </ion-list>
+    <button 
+    ion-button 
+    type="submit" 
+    block
+    [disabled]="!f.valid">Add Item</button><!--deshabilitar el boton si el formulario es invalido-->
+  </form>
+  <!--ahora mostraremos la lista de items a comprar-->
+  <ion-list>
+    <ion-item *ngFor="let item of items; let i=index" (click)="onCheckItem(i)">
+      {{item.name}} - {{item.ammount}}
+    </ion-item>
+  </ion-list>
+</ion-content>
