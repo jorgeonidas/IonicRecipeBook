@@ -52,6 +52,7 @@ export class ShoppingListPage{
     this.items = this.slService.getIngredientList();
     console.log(this.items); 
   }
+  
   //necesitamos pasar el evcento para que la funcion present(ev: event) deduzca la posicion donde se debe ubicar el popover
   onShowOptions(event: MouseEvent){
     const loading = this.loadingCtrl.create({
@@ -112,6 +113,11 @@ export class ShoppingListPage{
       buttons: ['ok']
     });
     alert.present();
+  }
+
+  clicked(){
+    console.log("clicked");
+    
   }
 
 }

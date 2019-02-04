@@ -46,7 +46,7 @@ export class RecipesService{
                         .do((recipes: Recipe[]) => {
                             if(recipes){
                                 for (let item of recipes) { //voy de recenta en receta preguntando si tiene un arreglo de ingredientes
-                                    if (!item.hasOwnProperty('ingredients')) { //si no lo tiene le asigno uno vacio
+                                    if (!item.hasOwnProperty('ingredients')) { //si no lo tiene le agrego esa propiedad como un arreglo de ingredientes vacio
                                         item.ingredients = []
                                     }
                                 }

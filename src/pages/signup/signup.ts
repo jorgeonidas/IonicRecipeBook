@@ -10,7 +10,11 @@ import { AuthService } from '../../services/auth';
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authService: AuthService, private loadingCtrl: LoadingController, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private authService: AuthService, 
+    private loadingCtrl: LoadingController, 
+    private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
